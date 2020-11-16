@@ -1,7 +1,6 @@
 <template>
   <h2>My Course Goal</h2>
   <h3 v-if="courseGoal.showGoal">{{ courseGoal.title }}</h3>
-  <!-- Task 2: Toggle (show/ hide) the goal with help of the button  -->
   <button @click="toggleGoal">Toggle Goal</button>
   <!-- Task 3: Manage data in three ways -->
   <!-- => Separate refs -->
