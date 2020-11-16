@@ -1,31 +1,21 @@
 <template>
   <h2>My Course Goal</h2>
-  <h3 v-if="courseGoal.showGoal">{{ courseGoal.title }}</h3>
-  <button @click="toggleGoal">Toggle Goal</button>
-  <!-- Task 3: Manage data in three ways -->
-  <!-- => Ref Object -->
-  <!-- Task 4: Also solve the assignment with the Options API -->
+  <h3 v-if="showGoal">{{ courseGoal }}</h3>
+  <button @click="showHideGoal">Toggle Goal</button>
 </template>
 
 <script>
-import { ref } from 'vue';
-
 export default {
-  setup() {
-    const myGoal = ref({
-      title: 'Become a Vue Master',
-      showGoal: true
-    });
-
-    function showHideGoal() {
-      myGoal.value.showGoal = !myGoal.value.showGoal;
-      console.log(myGoal.value.showGoal);
-    }
-
+  data() {
     return {
-      courseGoal: myGoal.value,
-      toggleGoal: showHideGoal
+      courseGoal: 'Become a Vue Master',
+      showGoal: true
     };
+  },
+  methods: {
+    showHideGoal() {
+      this.showGoal = !this.showGoal;
+    }
   }
 };
 </script>
