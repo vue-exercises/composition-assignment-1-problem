@@ -1,30 +1,28 @@
 <template>
   <h2>My Course Goal</h2>
-  <h3 v-if="courseGoal.showGoal">{{ courseGoal.title }}</h3>
+  <h3 v-if="boolGoal">{{ courseGoalTitle }}</h3>
   <button @click="toggleGoal">Toggle Goal</button>
   <!-- Task 3: Manage data in three ways -->
   <!-- => Separate refs -->
   <!-- => Ref Object -->
-  <!-- => Reactive Object -->
   <!-- Task 4: Also solve the assignment with the Options API -->
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { ref } from 'vue';
 
 export default {
   setup() {
-    const myGoal = reactive({
-      title: 'Become a Vue Master',
-      showGoal: true
-    });
+    const myGoalTitle = ref('Become a Vue Master');
+    let showGoal = ref(true);
 
     function showHideGoal() {
-      myGoal.showGoal = !myGoal.showGoal;
+      showGoal.value = !showGoal.value;
     }
 
     return {
-      courseGoal: myGoal,
+      courseGoalTitle: myGoalTitle,
+      boolGoal: showGoal,
       toggleGoal: showHideGoal
     };
   }
