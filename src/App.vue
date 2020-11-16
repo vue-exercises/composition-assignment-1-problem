@@ -1,9 +1,8 @@
 <template>
   <h2>My Course Goal</h2>
-  <h3 v-if="boolGoal">{{ courseGoalTitle }}</h3>
+  <h3 v-if="courseGoal.showGoal">{{ courseGoal.title }}</h3>
   <button @click="toggleGoal">Toggle Goal</button>
   <!-- Task 3: Manage data in three ways -->
-  <!-- => Separate refs -->
   <!-- => Ref Object -->
   <!-- Task 4: Also solve the assignment with the Options API -->
 </template>
@@ -13,16 +12,18 @@ import { ref } from 'vue';
 
 export default {
   setup() {
-    const myGoalTitle = ref('Become a Vue Master');
-    let showGoal = ref(true);
+    const myGoal = ref({
+      title: 'Become a Vue Master',
+      showGoal: true
+    });
 
     function showHideGoal() {
-      showGoal.value = !showGoal.value;
+      myGoal.value.showGoal = !myGoal.value.showGoal;
+      console.log(myGoal.value.showGoal);
     }
 
     return {
-      courseGoalTitle: myGoalTitle,
-      boolGoal: showGoal,
+      courseGoal: myGoal.value,
       toggleGoal: showHideGoal
     };
   }
